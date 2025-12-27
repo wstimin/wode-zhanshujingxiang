@@ -1,17 +1,34 @@
 {
-  "log": { "level": "info", "timestamp": true },
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
   "inbounds": [
     {
       "type": "vless",
       "tag": "vless-in",
       "listen": "127.0.0.1",
       "listen_port": 8081,
-      "users": [ { "uuid": "$$UUID$$", "flow": "" } ],
-      "transport": { "type": "ws", "path": "$$WSPATH$$" }
+      "users": [
+        {
+          "uuid": "8052daa7-567f-46b8-b7e9-280d8fe059fb",
+          "flow": ""
+        }
+      ],
+      "transport": {
+        "type": "ws",
+        "path": "/a"
+      }
     }
   ],
   "outbounds": [
-    { "type": "direct", "tag": "direct" },
-    { "type": "block", "tag": "block" }
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
   ]
 }
