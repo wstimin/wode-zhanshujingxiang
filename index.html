@@ -1,8 +1,180 @@
 <!DOCTYPE html>
-<html>
-<head><title>Welcome</title></head>
-<body style="text-align:center; padding:50px; font-family:sans-serif;">
-    <h1>Site Maintenance</h1>
-    <p>We are upgrading our infrastructure.</p>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anime Cute Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Comic Sans MS", "微软雅黑", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
+      min-height: 100vh;
+      color: #555;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px dashed #ffb6c1;
+    }
+
+    header h1 {
+      font-size: 28px;
+      color: #ff6fa1;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #888;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff6fa1;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero img {
+      width: 200px;
+      margin-bottom: 30px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      color: #ff6fa1;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .hero button {
+      background: #ff6fa1;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 30px;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 6px 0 #e05587;
+      transition: 0.2s;
+    }
+
+    .hero button:hover {
+      transform: translateY(2px);
+      box-shadow: 0 4px 0 #e05587;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      padding: 60px 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      width: 80px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: #ff6fa1;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌸 Anime World</h1>
+    <nav>
+      <a href="#">首页</a>
+      <a href="#">角色</a>
+      <a href="#">画廊</a>
+      <a href="#">关于</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="https://i.imgur.com/8Km9tLL.png" alt="anime girl" />
+    <h2>欢迎来到可爱的动漫世界 ✨</h2>
+    <p>
+      这里是一个充满粉色、梦想和治愈系能量的地方，和二次元角色一起开启你的快乐一天吧～
+    </p>
+    <button>开始探索</button>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <img src="https://i.imgur.com/0y0y0y0.png" alt="icon" />
+      <h3>萌系角色</h3>
+      <p>各种可爱、元气满满的动漫角色等你发现。</p>
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/0y0y0y0.png" alt="icon" />
+      <h3>精美插画</h3>
+      <p>收藏高质量二次元插画，治愈你的心情。</p>
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/0y0y0y0.png" alt="icon" />
+      <h3>轻松氛围</h3>
+      <p>柔和色彩与圆润设计，打造舒适体验。</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Anime World | 可爱即正义 💖
+  </footer>
+
 </body>
 </html>
