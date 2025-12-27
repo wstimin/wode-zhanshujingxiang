@@ -17,7 +17,7 @@ RUN wget -O /usr/bin/cloudflared https://github.com/cloudflare/cloudflared/relea
 
 # --- 复制文件 ---
 COPY index.html /var/www/html/index.html
-# 🌟 新增：复制信息页模板到 /app
+# 🌟 必须要有这行：复制信息页模板
 COPY info.html /app/info.template.html
 
 COPY nginx.conf /etc/nginx/nginx.conf.template
