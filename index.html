@@ -5,309 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime World - 欢迎来到可爱的动漫世界</title>
     <style>
-        /* --- 全局样式 --- */
-        body {
-            margin: 0;
-            font-family: 'Comic Sans MS', 'Muli', 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%);
-            background-attachment: fixed;
-            color: #555;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        a { text-decoration: none; color: inherit; }
-
-        /* --- 顶部导航栏 --- */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .brand {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff85a2;
-            display: flex;
-            align-items: center;
-        }
-        .brand span { margin-right: 8px; }
-        .nav-links a {
-            margin-left: 25px;
-            font-weight: 500;
-            color: #777;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover { color: #ff85a2; }
-
-        /* --- 主要内容区域 --- */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        /* --- 头像和标题 --- */
-        .avatar-container {
-            margin-bottom: 30px;
-            position: relative;
-        }
-        .avatar {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 6px solid #fff;
-            box-shadow: 0 10px 25px rgba(255, 133, 162, 0.3);
-            transition: transform 0.3s;
-        }
-        .avatar:hover { transform: scale(1.05) rotate(3deg); }
-
-        h1 {
-            font-size: 3em;
-            color: #ff85a2;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
-        }
-        .sparkle { color: #ffd700; }
-
-        .description {
-            font-size: 1.2em;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            line-height: 1.6;
-            color: #666;
-        }
-
-        /* --- 🌟 新增：魔法工具箱样式 --- */
+        /* --- 样式部分保持不变 --- */
+        body { margin: 0; font-family: 'Comic Sans MS', sans-serif; background: linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%); color: #555; display: flex; flex-direction: column; min-height: 100vh; }
+        .navbar { display: flex; justify-content: space-between; padding: 15px 5%; background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
+        .brand { font-size: 24px; color: #ff85a2; font-weight: bold; }
+        .nav-links a { margin-left: 20px; color: #777; text-decoration: none; }
+        .main-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 50px 20px; }
+        .avatar { width: 150px; height: 150px; border-radius: 50%; border: 5px solid #fff; box-shadow: 0 10px 20px rgba(255,133,162,0.3); }
+        h1 { color: #ff85a2; margin-top: 20px; text-shadow: 1px 1px 2px white; }
+        
+        /* 核心卡片样式 */
         .magic-box {
             background: white;
-            padding: 25px;
+            padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(255, 133, 162, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             max-width: 500px;
             width: 90%;
-            margin-top: 20px;
+            margin-top: 30px;
             border: 2px solid #fff0f5;
         }
-
-        .input-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        
-        .input-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #ff85a2;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ffe4e1;
-            border-radius: 10px;
-            font-size: 16px;
-            outline: none;
-            box-sizing: border-box;
-            color: #555;
-            transition: border-color 0.3s;
-        }
-        input[type="text"]:focus {
-            border-color: #ff85a2;
-        }
-
-        .btn-explore {
+        .btn-copy {
             background: linear-gradient(to right, #ff85a2, #ffacc7);
             color: white;
-            padding: 12px 30px;
+            padding: 15px 40px;
             border-radius: 30px;
-            font-size: 1.1em;
+            font-size: 1.2em;
             font-weight: bold;
             border: none;
             cursor: pointer;
             width: 100%;
-            margin-top: 10px;
             box-shadow: 0 5px 15px rgba(255, 133, 162, 0.4);
-            transition: all 0.3s ease;
+            transition: transform 0.2s;
         }
-        .btn-explore:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 133, 162, 0.6);
-        }
-
-        .result-area {
-            margin-top: 15px;
-            display: none; /* 默认隐藏 */
-        }
+        .btn-copy:active { transform: scale(0.98); }
         textarea {
-            width: 100%;
-            height: 80px;
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px dashed #ff85a2;
-            background: #fffafa;
-            color: #888;
-            font-size: 12px;
-            resize: none;
-            box-sizing: border-box;
+            width: 100%; height: 60px; margin-top: 15px; padding: 10px;
+            border-radius: 10px; border: 1px dashed #ccc;
+            font-size: 12px; color: #999; resize: none;
+            background: #fafafa;
         }
-
-        /* --- 底部卡片区域 --- */
-        .features {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 50px 5%;
-            flex-wrap: wrap;
-        }
-        .feature-card {
-            background: #fff;
-            padding: 30px;
-            border-radius: 20px;
-            width: 280px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-            border: 2px solid #fff0f5;
-        }
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: #ffcfdc;
-        }
-        .card-icon {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-            border-radius: 15px;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
-            display: inline-block;
-            line-height: 80px;
-            font-size: 30px;
-            color: white;
-        }
-        .feature-card h3 { color: #ff85a2; margin-bottom: 10px; }
-        .feature-card p { font-size: 0.95em; color: #888; }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
-            color: #aaa;
-            background: rgba(255,255,255,0.3);
-        }
+        footer { text-align: center; padding: 20px; color: #aaa; font-size: 0.9em; }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="brand"><span>🌸</span> Anime World</div>
-        <div class="nav-links">
-            <a href="#">首页</a>
-            <a href="#">角色</a>
-            <a href="#">画廊</a>
-            <a href="#">关于</a>
-        </div>
+        <div class="brand">🌸 Anime World</div>
+        <div class="nav-links"><a href="#">首页</a><a href="#">画廊</a></div>
     </nav>
 
     <main class="main-content">
-        <div class="avatar-container">
-            <img src="https://api.dicebear.com/7.x/adventurer-neutral/svg?seed=Mochi&backgroundColor=ffd5dc" alt="可爱的动漫头像" class="avatar">
-        </div>
-
-        <h1>欢迎来到可爱的动漫世界 <span class="sparkle">✨</span></h1>
-        
-        <p class="description">
-            这里是一个充满粉色、梦想和治愈系能量的地方。<br>
-            和二次元角色一起开启你的快乐一天吧~ (๑•̀ㅂ•́)و✧
-        </p>
+        <img src="https://api.dicebear.com/7.x/adventurer-neutral/svg?seed=Mochi&backgroundColor=ffd5dc" class="avatar">
+        <h1>欢迎回家 <span style="color:#ffd700">✨</span></h1>
+        <p>这里充满了治愈的能量，祝你今天也开心！</p>
 
         <div class="magic-box">
-            <div class="input-group">
-                <label class="input-label">✨ 输入你的 UUID:</label>
-                <input type="text" id="uuidInput" placeholder="粘贴你的 UUID (例如 550e84...)">
-            </div>
-            
-            <button class="btn-explore" onclick="generateLink()">🪄 生成并复制魔法链接</button>
-
-            <div class="result-area" id="resultArea">
-                <p style="font-size:12px; color:#ff85a2; margin: 5px 0;">链接已复制！去软件里粘贴吧~ 👇</p>
-                <textarea id="vlessOutput" readonly></textarea>
-            </div>
+            <button class="btn-copy" onclick="copyMagicLink()">🚀 一键复制节点链接</button>
+            <textarea id="linkOutput" readonly placeholder="点击上方按钮，链接会自动出现在这里并复制..."></textarea>
         </div>
     </main>
 
-    <section class="features">
-        <div class="feature-card">
-            <div class="card-icon">🎀</div>
-            <h3>萌系角色</h3>
-            <p>各种可爱、元气满满的动漫角色等你发现。</p>
-        </div>
-        <div class="feature-card">
-            <div class="card-icon">🎨</div>
-            <h3>精美插画</h3>
-            <p>收藏高质量二次元插画，治愈你的心情。</p>
-        </div>
-        <div class="feature-card">
-            <div class="card-icon">☁️</div>
-            <h3>轻松氛围</h3>
-            <p>柔和色彩与圆润设计，打造舒适体验。</p>
-        </div>
-    </section>
-
-    <footer>
-        © 2025 Anime World. Made with 💖 for travelers.
-    </footer>
+    <footer>© 2025 Anime World</footer>
 
     <script>
-        function generateLink() {
-            // 1. 获取用户输入的 UUID
-            const uuid = document.getElementById('uuidInput').value.trim();
-            
-            // 简单校验
-            if (!uuid) {
-                alert("请先输入 UUID 哦！(｡•́︿•̀｡)");
-                return;
-            }
+        // ==========================================
+        // 👇 请在这里填入你的真实 UUID (保留引号)
+        const MY_UUID = "8052daa7-567f-46b8-b7e9-280d8fe059fb"; 
+        
+        // 👇 这里不需要动，路径已经固定是 /a
+        const MY_PATH = "/a"; 
+        // ==========================================
 
-            // 2. 自动获取当前域名
+        function copyMagicLink() {
+            // 1. 自动获取当前域名
             const host = window.location.hostname;
             
-            // 3. 这里的路径写死为 /a (因为我们后端已经改成了 /a)
-            const path = "/a";
+            // 2. 对路径进行转义 (修复 V2Ray 识别错误的关键)
+            // 把 /a 变成 %2Fa，这样软件绝不会识别错
+            const safePath = encodeURIComponent(MY_PATH); 
 
-            // 4. 拼凑 VLESS 链接
-            const link = `vless://${uuid}@${host}:443?encryption=none&security=tls&type=ws&host=${host}&path=${path}#MyAnimeNode`;
+            // 3. 生成完美的 VLESS 链接
+            const link = `vless://${MY_UUID}@${host}:443?encryption=none&security=tls&type=ws&host=${host}&path=${safePath}#AnimeNode-${host}`;
 
-            // 5. 显示并复制
-            const outputArea = document.getElementById('resultArea');
-            const textarea = document.getElementById('vlessOutput');
-            
-            outputArea.style.display = 'block';
+            // 4. 显示并复制
+            const textarea = document.getElementById('linkOutput');
             textarea.value = link;
-            
-            // 执行复制
             textarea.select();
             document.execCommand("copy");
-            
-            // 更改按钮文字提示成功
-            const btn = document.querySelector('.btn-explore');
+
+            // 5. 按钮变色提示
+            const btn = document.querySelector('.btn-copy');
             const originalText = btn.innerText;
-            btn.innerText = "复制成功！✅";
-            setTimeout(() => { btn.innerText = originalText; }, 2000);
+            btn.innerText = "复制成功！去粘贴吧 ✅";
+            btn.style.background = "linear-gradient(to right, #56ab2f, #a8e063)"; // 变绿色
+            
+            setTimeout(() => { 
+                btn.innerText = originalText; 
+                btn.style.background = ""; // 恢复粉色
+            }, 3000);
         }
     </script>
 
