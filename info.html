@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Configuration</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #f4f6f8; padding: 20px; color: #333; }
+        .card { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h2 { border-bottom: 2px solid #eaeaea; padding-bottom: 10px; margin-bottom: 20px; }
+        .item { margin-bottom: 15px; }
+        .label { font-weight: bold; color: #555; display: block; margin-bottom: 5px; }
+        .value { background: #f8f9fa; padding: 10px; border-radius: 6px; font-family: monospace; word-break: break-all; border: 1px solid #e1e4e8; }
+        textarea { width: 100%; height: 100px; padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-family: monospace; }
+        button { background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 16px; width: 100%; margin-top: 10px; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>🚀 节点配置信息</h2>
+        
+        <div class="item">
+            <span class="label">地址 (Address):</span>
+            <div class="value" id="domain">Waiting...</div>
+        </div>
+        <div class="item">
+            <span class="label">UUID:</span>
+            <div class="value" id="uuid">$$UUID$$</div>
+        </div>
+        <div class="item">
+            <span class="label">路径 (Path):</span>
+            <div class="value" id="path">$$WSPATH$$</div>
+        </div>
+        <div class="item">
+            <span class="label">端口 (Port):</span>
+            <div class="value">443</div>
+        </div>
+
+        <div class="item">
+            <span class="label">VLESS 链接 (可直接导入):</span>
+            <textarea id="vlessLink" readonly></textarea>
+        </div>
+        
+        <button onclick="copyLink()">📋 复制链接</button>
+    </div>
+
+    <script>
+        // 自动获取当前域名
+        const domain = window.location.hostname;
+        document.getElementById('domain').innerText = domain;
+
+        // 获取脚本注入的 UUID 和 Path
+        const uuid = document.getElementById('uuid').innerText;
+        const path = document.getElementById('path').innerText;
+
+        // 生成 VLESS 链接
+        // 格式: vless://uuid@host:443?encryption=none&security=tls&type=ws&host=host&path=path#NodeName
+        const vless = `vless://${uuid}@${domain}:443?encryption=none&security=tls&type=ws&host=${domain}&path=${encodeURIComponent(path)}#My-Zeabur-Node`;
+        
+        document.getElementById('vlessLink').value = vless;
+
+        function copyLink() {
+            const copyText = document.getElementById("vlessLink");
+            copyText.select();
+            document.execCommand("copy");
+            alert("链接已复制！去软件里粘贴吧~");
+        }
+    </script>
+</body>
+</html>
